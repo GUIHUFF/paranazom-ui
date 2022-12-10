@@ -1,13 +1,13 @@
 
 import "./styles/main.css";
 import './styles/index.css';
-import Header from "./components/Header/header";
+import RouterApp from "./routes/routes";
 
 function App() {
 
   return (
     <div className="">
-      <Header />
+      <RouterApp />
     </div>
   )
 }
