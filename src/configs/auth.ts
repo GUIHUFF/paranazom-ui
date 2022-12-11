@@ -1,5 +1,5 @@
 export interface AuthProps {
-  email: string;
+  username: string;
   password: string;
 }
 
@@ -9,7 +9,6 @@ export const isAuthenticated = () => localStorage.getItem(AUTH_KEY) !== null;
 
 export const getAuth = () => {
   const auth = localStorage.getItem(AUTH_KEY);
-  console.log(auth);
   return auth;
 }
 
