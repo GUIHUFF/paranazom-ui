@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Home from '../pages/Home';
+import Login from '../pages/Login';
 
 interface PrivateRouteProps {
   redirectTo: string;
@@ -15,6 +16,7 @@ const RouterApp = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path='/login' element={<Login />} />
 
 
         {/*ROTAS PRIVADAS */}

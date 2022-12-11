@@ -3,7 +3,7 @@ import { ButtonHTMLAttributes } from "react"
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
-export function Buttom(props : ButtonProps) {
+export function Button(props : ButtonProps) {
 
   return (
     <button 
@@ -23,7 +23,7 @@ export function Input(props: InputProps){
   return (
     <input 
       {...props}
-      className="bg-zinc-50 py-3 px-4 rounded-lg text-sm placeholder:text-zinc-800"
+      className="bg-zinc-50 py-3 px-4 rounded-lg text-sm text-zinc-900 placeholder:text-zinc-800"
     />
   )
 }
