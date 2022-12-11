@@ -116,6 +116,7 @@ export default function Produtos () {
                 img={product.image_url}
                 price={product.price}
                 title={product.name}
+                onClick={() => navigate(`/produto/${product.product_id}`)}
               />
             )
           })}
