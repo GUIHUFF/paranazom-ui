@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { isAuthenticated } from '../configs/auth';
+import Clientes from '../pages/Clientes';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
 import Produtos from '../pages/Produtos';
@@ -23,6 +24,14 @@ const RouterApp = () => {
 
 
         {/*ROTAS PRIVADAS */}
+        <Route
+          path="/clientes"
+          element={
+            <PrivateRoute redirectTo={'/login'}>
+              <Clientes />
+            </PrivateRoute>
+          }
+        />
 
         <Route path="*" element={<h1>Page not found</h1>} />
       </Routes>
