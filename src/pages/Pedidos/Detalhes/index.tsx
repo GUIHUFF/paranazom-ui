@@ -2,6 +2,7 @@ import { CircularProgress } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import CardItem from "../../../components/CardItem";
 import Footer from "../../../components/Footer";
 import Header from "../../../components/Header";
 import api from "../../../configs/api";
@@ -68,17 +69,44 @@ export default function DetalhesPedido () {
             </p>
             <p className="block text-lg my-2"><span className="text-sky-900 font-bold">Desconto: </span>{pedido?.discount}</p>
           </div>
-          <div className="border-4 border-sky-200 border-t-sky-800 rounded-lg py-4 px-1">
-            <h5 className="block font-bold text-lg my-2"><span className="text-sky-900">Informações do Cliente</span></h5>
-            <p className="block my-2">
-              <span className="text-sky-900 font-bold">Nome: </span> {pedido?.client.name} | 
-              <span className="text-sky-900 font-bold"> CPF: </span> {pedido?.client.cpf}
-            </p>
-            <p className="block my-2">
-              <span className="text-sky-900 font-bold">E-mail: </span> {pedido?.client.email_address} | 
-              <span className="text-sky-900 font-bold"> Telefone: </span> {pedido?.client.phone_number} 
-            </p>
-
+          <div className="border-4 border-sky-200 border-t-sky-800 rounded-lg py-4 px-1 flex flex-wrap justify-between">
+            <div>
+              <h5 className="block font-bold text-lg my-2"><span className="text-sky-900">Informações do Cliente</span></h5>
+              <p className="block my-2">
+                <span className="text-sky-900 font-bold">Nome: </span> {pedido?.client.name} | 
+                <span className="text-sky-900 font-bold"> CPF: </span> {pedido?.client.cpf}
+              </p>
+              <p className="block my-2">
+                <span className="text-sky-900 font-bold">E-mail: </span> {pedido?.client.email_address} | 
+                <span className="text-sky-900 font-bold"> Telefone: </span> {pedido?.client.phone_number} 
+              </p>
+            </div>
+            <div className="w-[350px]">
+              <h5 className="block font-bold text-lg my-2"><span className="text-sky-900">Informações do Vendedor</span></h5>
+              <p className="block my-2">
+                <span className="text-sky-900 font-bold">Nome: </span> {pedido?.employee.name} 
+              </p>
+              <p className="block my-2">
+                <span className="text-sky-900 font-bold"> Função: </span> {pedido?.employee.role.description}
+              </p>
+            </div>
+          </div>
+          <div className="border-4 border-sky-200 border-t-sky-800 rounded-lg py-4 px-1 flex justify-start items-center flex-col">
+            <h5 className="block font-bold text-lg my-2 text-center"><span className="text-sky-900">Itens do pedido</span></h5>
+            <div className="my-5 px-2 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 self-center ">
+              {pedido?.products_order.map(item => {
+                return (
+                  <CardItem key={item.product.product_id} 
+                    category={item.product.category.description}
+                    img={item.product.image_url}
+                    price={item.product.price}
+                    title={item.product.name}
+                    onClick={() => navigate(`/produto/${item.product.product_id}`)}
+                    amount={item.amount}
+                  />
+                )
+              })}
+            </div>
           </div>
         </div>
 
