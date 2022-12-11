@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { isAuthenticated } from '../configs/auth';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
 
@@ -8,7 +9,7 @@ interface PrivateRouteProps {
 }
 
 const PrivateRoute = ({ children, redirectTo }: PrivateRouteProps) => {
-  return true ? children : <Navigate to={redirectTo} />;
+  return isAuthenticated() ? children : <Navigate to={redirectTo} />;
 };
 
 const RouterApp = () => {

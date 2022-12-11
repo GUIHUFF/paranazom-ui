@@ -3,10 +3,10 @@ import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import logo from "../../assets/logo.png";
 import { Button, Input } from "../../components/ButtonsInputs";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import api from "../../configs/api";
 import { toast } from 'react-toastify';
-import { setAuth } from "../../configs/auth";
+import { isAuthenticated, setAuth } from "../../configs/auth";
 import { useNavigate } from "react-router-dom";
 
 export default function Login () {
@@ -15,6 +15,22 @@ export default function Login () {
   const [submit, setSubmit] = useState<boolean>(false);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if(isAuthenticated()){
+      toast('Você já está logado em uma conta!', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        });
+      navigate('/produtos');
+    }
+  }, [])
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();

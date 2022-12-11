@@ -3,9 +3,9 @@
 interface BannerProps {
   position: string;
   img: string;
-  textStrong: string,
-  textThin: string,
-  imgHidden: boolean
+  textStrong: string;
+  textThin: string;
+  imgHidden?: boolean;
 }
 
 export default function Banner ({ position, img, textStrong, textThin, imgHidden } : BannerProps) {
