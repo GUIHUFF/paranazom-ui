@@ -3,6 +3,7 @@ import { isAuthenticated } from '../configs/auth';
 import Clientes from '../pages/Clientes';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
+import Pedidos from '../pages/Pedidos';
 import Produtos from '../pages/Produtos';
 
 interface PrivateRouteProps {
@@ -29,6 +30,14 @@ const RouterApp = () => {
           element={
             <PrivateRoute redirectTo={'/login'}>
               <Clientes />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/pedidos"
+          element={
+            <PrivateRoute redirectTo={'/login'}>
+              <Pedidos />
             </PrivateRoute>
           }
         />

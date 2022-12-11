@@ -126,7 +126,7 @@ export default function Clientes () {
     });
     setRows(list);
     setLoading(false);
-  }, [clients])
+  }, [clients]);
 
   if(loading){
     return (<div className="flex justify-center items-center h-screen">
