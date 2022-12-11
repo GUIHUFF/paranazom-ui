@@ -4,6 +4,7 @@ import Clientes from '../pages/Clientes';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
 import Pedidos from '../pages/Pedidos';
+import NovoPedido from '../pages/Pedidos/Novo';
 import Produtos from '../pages/Produtos';
 
 interface PrivateRouteProps {
@@ -38,6 +39,14 @@ const RouterApp = () => {
           element={
             <PrivateRoute redirectTo={'/login'}>
               <Pedidos />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/novo-pedido"
+          element={
+            <PrivateRoute redirectTo={'/login'}>
+              <NovoPedido />
             </PrivateRoute>
           }
         />

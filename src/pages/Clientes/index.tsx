@@ -9,7 +9,7 @@ import { AuthProps, getAuth, isAuthenticated } from "../../configs/auth";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-interface ClientProps {
+export interface ClientProps {
   client_id: string; 
   name: string;
   rg: string | null; 

@@ -20,6 +20,7 @@ interface RowsProps {
   employee: string;
   to: string;
   items: number;
+  description: string;
 }
 
 export default function Pedidos () {
@@ -68,6 +69,12 @@ export default function Pedidos () {
       field: 'items',
       headerName: 'qnt Itens',
       width: 100,
+      editable: false,
+    },
+    {
+      field: 'description',
+      headerName: 'Descrição',
+      width: 210,
       editable: false,
     },
     {
@@ -135,6 +142,7 @@ export default function Pedidos () {
         employee: value.employee.name,
         to: value.order_id,
         items: value.products_order.length,
+        description: value.description,
       } as RowsProps);
     });
     setRows(list);
