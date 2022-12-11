@@ -41,3 +41,61 @@ export interface ProductFilterProps {
   size: number;
   empty: boolean;
 }
+
+export interface PedidoProps {
+  order_id: string
+  draft: boolean
+  paid: boolean
+  withdrawn: boolean
+  description: string
+  discount: number
+  employee: Employee
+  client: Client
+  products_order: ProductsOrder[]
+}
+
+export interface Employee {
+  employee_id: string
+  name: string
+  entry_date: string
+  is_active: boolean
+  role: Role
+}
+
+export interface Role {
+  role_id: string
+  description: string
+}
+
+export interface Client {
+  client_id: string
+  name: string
+  cpf: string
+  rg: any
+  email_address: string
+  phone_number: string
+  address: any
+}
+
+export interface ProductsOrder {
+  product_order_id: number
+  product: Product
+  amount: number
+}
+
+export interface Product {
+  product_id: string
+  name: string
+  tags: string
+  price: number
+  description: any
+  amount: number
+  image_url: string
+  category: Category
+}
+
+export interface Category {
+  category_id: string
+  description: string
+  image_url: any
+}
