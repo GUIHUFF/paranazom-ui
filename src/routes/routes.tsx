@@ -7,6 +7,7 @@ import Pedidos from '../pages/Pedidos';
 import DetalhesPedido from '../pages/Pedidos/Detalhes';
 import NovoPedido from '../pages/Pedidos/Novo';
 import Produtos from '../pages/Produtos';
+import DetalhesProduto from '../pages/Produtos/Detalhes';
 
 interface PrivateRouteProps {
   redirectTo: string;
@@ -24,6 +25,8 @@ const RouterApp = () => {
         <Route path="/" element={<Home />} />
         <Route path='/login' element={<Login />} />
         <Route path='/produtos' element={<Produtos />} />
+        <Route path='/produto/:id' element={<DetalhesProduto />} />
+
 
 
         {/*ROTAS PRIVADAS */}
