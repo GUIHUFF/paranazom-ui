@@ -1,5 +1,13 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { isAuthenticated } from '../configs/auth';
+import Clientes from '../pages/Clientes';
 import Home from '../pages/Home';
+import Login from '../pages/Login';
+import Pedidos from '../pages/Pedidos';
+import DetalhesPedido from '../pages/Pedidos/Detalhes';
+import NovoPedido from '../pages/Pedidos/Novo';
+import Produtos from '../pages/Produtos';
+import DetalhesProduto from '../pages/Produtos/Detalhes';
 
 interface PrivateRouteProps {
   redirectTo: string;
@@ -7,7 +15,7 @@ interface PrivateRouteProps {
 }
 
 const PrivateRoute = ({ children, redirectTo }: PrivateRouteProps) => {
-  return true ? children : <Navigate to={redirectTo} />;
+  return isAuthenticated() ? children : <Navigate to={redirectTo} />;
 };
 
 const RouterApp = () => {
@@ -15,9 +23,45 @@ const RouterApp = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/produtos' element={<Produtos />} />
+        <Route path='/produto/:id' element={<DetalhesProduto />} />
+
 
 
         {/*ROTAS PRIVADAS */}
+        <Route
+          path="/clientes"
+          element={
+            <PrivateRoute redirectTo={'/login'}>
+              <Clientes />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/pedidos"
+          element={
+            <PrivateRoute redirectTo={'/login'}>
+              <Pedidos />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/novo-pedido"
+          element={
+            <PrivateRoute redirectTo={'/login'}>
+              <NovoPedido />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/pedido/:id"
+          element={
+            <PrivateRoute redirectTo={'/login'}>
+              <DetalhesPedido />
+            </PrivateRoute>
+          }
+        />
 
         <Route path="*" element={<h1>Page not found</h1>} />
       </Routes>
