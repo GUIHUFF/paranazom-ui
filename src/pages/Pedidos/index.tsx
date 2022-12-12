@@ -121,11 +121,13 @@ export default function Pedidos () {
   }, []);
 
   useEffect(() => {
-    api.get('/orders', {auth: authUser}).then(resp => {
-      if(resp.status == 200){
-        setPedidos(resp.data);
-      }      
-    }).catch(err => {});
+    if(authUser){
+      api.get('/orders', {auth: authUser}).then(resp => {
+        if(resp.status == 200){
+          setPedidos(resp.data);
+        }      
+      }).catch(err => {});
+    }
   }, [authUser]);
 
   useEffect(() => {
