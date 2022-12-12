@@ -52,7 +52,7 @@ const RouterApp = () => {
           }
         />
         <Route
-          path="/pedidos/:id"
+          path="/pedido/:id"
           element={
             <PrivateRoute redirectTo={'/login'}>
               <DetalhesPedido />
